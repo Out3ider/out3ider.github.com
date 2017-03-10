@@ -442,7 +442,7 @@
 <p>git log进入后一直是在log中搜索模式，“q”键可一键退出git log</p>
 </blockquote>
 <h1 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h1><ul>
-<li><p>不小心弄乱了工作区的某个文件内容，想丢弃工作区的修改可用<code>git checkout -- file</code> <strong>注意：中间的–很重要，若没有则是切换分支</strong></p>
+<li><p>不小心弄乱了工作区的某个文件内容，想丢弃工作区的修改可用<br><code>git checkout -- file</code><br><strong>注意：中间的–很重要，若没有则是切换分支</strong></p>
 </li>
 <li><p>不小心弄乱了还添加到暂存区了（执行过add），则用<code>git reset HEAD file(如readme.txt)</code>即可使其回到工作区，再用上一步骤撤销。</p>
 </li>
@@ -451,9 +451,10 @@
 <ul>
 <li><p>可以用<code>git rm file</code>删除版本库里的文件，再commit即可；</p>
 </li>
-<li><p>删错了想恢复则用<code>git checkout -- file</code>即可；<strong>这里的命令其实是用版本库里的文件替代工作区的，无论删除还是修改都可以一键还原</strong> </p>
+<li><p>删错了想恢复则用<code>git checkout -- file</code>即可；</p>
 </li>
 </ul>
+<p><strong>这里的命令其实是用版本库里的文件替代工作区的，无论删除还是修改都可以一键还原</strong> </p>
 <h1 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h1><p><strong>git鼓励大量使用分支</strong></p>
 <p>查看分支：<code>git branch</code></p>
 <p>创建分支：<code>git branch &lt;name&gt;</code></p>
