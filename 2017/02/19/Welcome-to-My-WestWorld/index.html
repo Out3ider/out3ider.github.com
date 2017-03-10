@@ -402,7 +402,7 @@
 <li><strong>hydra</strong>： github与gitoschina使用同一个密钥必须二者注册账号的邮箱以及密码都一致才可以。</li>
 </ul>
 <p>(貌似没有效果，亲测)</p>
-<h1 id="Git初始化设置"><a href="#Git初始化设置" class="headerlink" title="Git初始化设置"></a>Git初始化设置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git config --global user.name &quot;你的名字或昵称&quot;</div><div class="line"></div><div class="line">git config --global user.email &quot;你的邮箱&quot;</div></pre></td></tr></table></figure>
+<h1 id="Git初始化设置"><a href="#Git初始化设置" class="headerlink" title="Git初始化设置"></a>Git初始化设置</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git config --global user.name <span class="string">"你的名字或昵称"</span></div><div class="line"></div><div class="line">git config --global user.email <span class="string">"你的邮箱"</span></div></pre></td></tr></table></figure>
 <h1 id="创建密钥"><a href="#创建密钥" class="headerlink" title="创建密钥"></a>创建密钥</h1><ul>
 <li>我们如何让本地git项目与远程的github建立联系呢？这里就用的密钥。通俗点叫口令吧</li>
 </ul>
@@ -413,17 +413,26 @@
 <ul>
 <li>生成新的密钥：</li>
 </ul>
-<figure class="highlight plain"><figcaption><span>–t rsa –C “ss237@vip.qq.com”```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">注意: 此处的邮箱地址，你可以输入自己的邮箱地址。</div><div class="line"></div><div class="line">在回车中会提示你输入一个密码，这个密码会在你提交项</div><div class="line"></div><div class="line">目时使用，如果为空的话提交项目时则不用输入。这个设</div><div class="line"></div><div class="line">置是防止别人往你的项目里提交内容。</div><div class="line"></div><div class="line">- 查看ssh key</div><div class="line"></div><div class="line">```bash</div><div class="line">cat ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Ssh-keygen –t rsa –C “ss237@vip.qq.com”</div></pre></td></tr></table></figure>
+<p>注意: 此处的邮箱地址，你可以输入自己的邮箱地址。</p>
+<p>在回车中会提示你输入一个密码，这个密码会在你提交项</p>
+<p>目时使用，如果为空的话提交项目时则不用输入。这个设</p>
+<p>置是防止别人往你的项目里提交内容。</p>
+<ul>
+<li>查看ssh key</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure>
 <ul>
 <li>终端验证（Terminal）</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -T git@github</div></pre></td></tr></table></figure>
 <h1 id="仓库的一些基本操作"><a href="#仓库的一些基本操作" class="headerlink" title="仓库的一些基本操作"></a>仓库的一些基本操作</h1><h2 id="1-修改仓库名"><a href="#1-修改仓库名" class="headerlink" title="1.修改仓库名"></a>1.修改仓库名</h2><p>默认仓库名都是 origin 若要更换origin这个名字为oschina:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote rename origin oschina</div></pre></td></tr></table></figure></p>
 <p>同样，以后推送时执行的命令就不再是 git push origin master 而是 git push oschina master 拉取也是一样的</p>
-<h2 id="2-添加一个仓库"><a href="#2-添加一个仓库" class="headerlink" title="2.添加一个仓库"></a>2.添加一个仓库</h2><p>如果想将一个远程仓库添加到本地的仓库中，可以执行</p>
-<figure class="highlight plain"><figcaption><span>remote add origin 仓库地址```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">注意: 1.origin是你的仓库的别名 可以随便改，但请务必不要与已有的仓库别名冲突 2. 仓库地址一般来讲支持 http/https/ssh/git协议，其他协议地址请勿添加</div><div class="line"></div><div class="line">第一次添加后执行如下，推送内容并关联分支</div><div class="line">```bash</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
+<h2 id="2-添加一个仓库"><a href="#2-添加一个仓库" class="headerlink" title="2.添加一个仓库"></a>2.添加一个仓库</h2><p>如果想将一个远程仓库添加到本地的仓库中，可以执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin 仓库地址</div></pre></td></tr></table></figure></p>
+<p>注意: 1.origin是你的仓库的别名 可以随便改，但请务必不要与已有的仓库别名冲突 2. 仓库地址一般来讲支持 http/https/ssh/git协议，其他协议地址请勿添加</p>
+<p>第一次添加后执行如下，推送内容并关联分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push -u origin master</div></pre></td></tr></table></figure></p>
 <p>有时候需要先pull，同理pull的时候第一次要输入git pull 仓库名 分支名。</p>
-<h2 id="3-查看当前仓库对应的远程仓库地址"><a href="#3-查看当前仓库对应的远程仓库地址" class="headerlink" title="3.查看当前仓库对应的远程仓库地址"></a>3.查看当前仓库对应的远程仓库地址</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote -v</div></pre></td></tr></table></figure>
+<h2 id="3-查看当前仓库对应的远程仓库地址"><a href="#3-查看当前仓库对应的远程仓库地址" class="headerlink" title="3.查看当前仓库对应的远程仓库地址"></a>3.查看当前仓库对应的远程仓库地址</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote -v</div></pre></td></tr></table></figure>
 <p>其中fetch是用来从远程同步 push是用来推送到远程</p>
 <p>#版本回退</p>
 <h2 id="head指针"><a href="#head指针" class="headerlink" title="head指针"></a>head指针</h2><p>head指向的版本就是当前的版本，可以使用<code>git reset --hard commit_id</code>来返回指定的版本</p>
@@ -456,8 +465,7 @@
 <p><strong>问题描述</strong>：删除远程分支。</p>
 <p><strong>问题解决</strong>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git branch -r <span class="_">-d</span> origin/name</div><div class="line">git push ori gin :name</div></pre></td></tr></table></figure>
-<p><code>git branch -d &lt;name&gt;</code>   只可以用来删除本地分支，且删除本地分支前应先删除</p>
-<p>远程分支否则无法track 远程分支导致无法删除。</p>
+<p><code>git branch -d &lt;name&gt;</code>   只可以用来删除本地分支，且删除本地分支前应先删除<br>远程分支否则无法track 远程分支导致无法删除。</p>
 
     
 
@@ -523,6 +531,14 @@
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/2017/02/14/Hello-World/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
 
@@ -622,7 +638,7 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-            <a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a>
+            <a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">3</span></a>
         </ul>
     </li>
 
@@ -640,7 +656,7 @@
     <li>
         <a href="/archives">
             文章总数
-            <span class="sidebar-badge">2</span>
+            <span class="sidebar-badge">3</span>
         </a>
     </li>
 </ul>
